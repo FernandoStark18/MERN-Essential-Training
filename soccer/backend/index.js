@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
+import routes from "./routes/soccerRuotes";
 
 const app = express();
 const PORT = 3000;
@@ -15,6 +16,8 @@ mongoose.connect("mongodb://localhost/soccerDB", {
 // bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+routes(app);
 
 app.get("/", (req, res) =>
   res.send(`Our Soccer application is running on port ${PORT}`)
