@@ -6,7 +6,7 @@ const Player = mongoose.model("Player", PlayerSchema);
 export const addNewPlayer = (req, res) => {
   let newPlayer = new Player(req.body);
 
-  newPlayer.save((err, Player) => {
+  newPlayer.save().then((err, Player) => {
     if (err) {
       res.send(err);
     }
@@ -15,7 +15,7 @@ export const addNewPlayer = (req, res) => {
 };
 
 export const getPlayers = (req, res) => {
-  Player.find({}, (err, Player) => {
+  Player.find().then({}, (err, Player) => {
     if (err) {
       res.send(err);
     }
