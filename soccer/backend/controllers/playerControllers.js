@@ -22,3 +22,12 @@ export const getPlayers = (req, res) => {
     res.json(Player);
   });
 };
+
+export const getPlayerWithID = (req, res) => {
+  Player.findById().then(req.params.PlayerId, (err, Player) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(Player);
+  });
+};

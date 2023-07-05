@@ -1,12 +1,19 @@
-import { addNewPlayer, getPlayers } from "../controllers/playerControllers";
+import {
+  addNewPlayer,
+  getPlayers,
+  getPlayerWithID,
+} from "../controllers/playerControllers";
 
 const routes = (app) => {
   app
     .route("/players")
     // GET endpoint
-    .get(getPlayers)
+    // GET Player ID endpoint
+    .get(getPlayerWithID)
     // POST endpoint
     .post(addNewPlayer);
+
+  app.route("/player/:PlayerId").get(getPlayerWithID);
 };
 
 export default routes;
