@@ -15,7 +15,7 @@ export const addNewPlayer = (req, res) => {
 };
 
 export const getPlayers = (req, res) => {
-  Player.find().then({}, (err, Player) => {
+  Player.find({}).then((err, Player) => {
     if (err) {
       res.send(err);
     }
@@ -24,7 +24,18 @@ export const getPlayers = (req, res) => {
 };
 
 export const getPlayerWithID = (req, res) => {
-  Player.findById().then(req.params.PlayerId, (err, Player) => {
+  Player.findById(req.params.PlayerId).then((err, Player) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(Player);
+  });
+};
+
+export const updatePlayer = (req, res) => {
+  Player.findOneAndUpdate({ _id: req.params.PlayerId }, req.body, {
+    new: true,
+  }).then((err, Player) => {
     if (err) {
       res.send(err);
     }
