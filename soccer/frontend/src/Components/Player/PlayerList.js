@@ -12,9 +12,9 @@ const PlayerList = (props) => {
             href="#!"
             className="collection-item"
             key={item._id}
-            onClick={props.updateCurrenPlayer.bind(this, item)}
+            onClick={props.updateCurrentPlayer.bind(this, item)}
           >
-            {item.firstNames} {item.lastName}
+            {item.firstName} {item.lastName}
           </a>
         ))}
       </ul>
