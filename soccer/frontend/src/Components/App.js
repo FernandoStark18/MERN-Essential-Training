@@ -17,7 +17,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const url = "http//localhost:4000/players";
+    const url = "http://localhost:4000/players";
 
     axios
       .get(url)
@@ -25,6 +25,7 @@ class App extends React.Component {
         this.setState({
           players: Response.data,
         });
+        console.log(Response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -46,14 +47,20 @@ class App extends React.Component {
 
         <div className="row">
           <div className="col s3">
-            PlayerList players={this.state.players} updateCurrentPlayer=
-            {this.state.currentPlayer}
+            <PlayerList
+              players={this.state.players}
+              updateCurrentPlayer={this.state.currentPlayer}
+            />
           </div>
-          <div className="col s9">PlayerSingle</div>
+          <div className="col s9">
+            <PlayerSingle />
+          </div>
         </div>
 
         <div className="row">
-          <div className="col s12">PlayerForm</div>
+          <div className="col s12">
+            <PlayerForm />
+          </div>
         </div>
       </div>
     );
