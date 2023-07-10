@@ -11,6 +11,8 @@ class PlayerForm extends React.Component {
         lastName: this.refs.lastName.value,
         phone: this.refs.phone.value,
         email: this.refs.email.value,
+        strength: this.refs.strength.value,
+        endurance: this.refs.endurance.value,
       })
       .then((response) => {
         console.log(response);
@@ -18,7 +20,10 @@ class PlayerForm extends React.Component {
       .catch((error) => {
         console.log(error);
       });
+
+    window.location.reload();
   }
+
   render() {
     return (
       <div className="row">
@@ -44,12 +49,22 @@ class PlayerForm extends React.Component {
               <label htmlFor="email">Email</label>
             </div>
           </div>
+          <div className="row">
+            <div className="input-field col s6">
+              <input id="strength" ref="strength" type="number" />
+              <label htmlFor="strength">Strength</label>
+            </div>
+            <div className="input-field col s6">
+              <input id="endurance" ref="endurance" type="number" />
+              <label htmlFor="endurance">Endurance</label>
+            </div>
+          </div>
           <button
-            className="btn waver-effect waver-light"
-            type="sumbit"
-            name="action"
+            className="btn waves-effect waves-light"
+            type="submit"
+            nme="action"
           >
-            Add Player
+            Add player
           </button>
         </form>
       </div>

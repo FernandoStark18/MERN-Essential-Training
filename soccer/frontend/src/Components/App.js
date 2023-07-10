@@ -17,10 +17,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const url = "http://127.0.0.1:4000/players";
-
     axios
-      .get(url)
+      .get("http://localhost:4000/players")
       .then((Response) => {
         this.setState({
           players: Response.data,
